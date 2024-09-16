@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Tuhin's Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #74ebd5 0%, #acb6e5 100%);
+            margin: 0;
+            color: #333;
+            scroll-behavior: smooth;
+        }
+        header {
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1498050108023-c5249f4df085?fit=crop&w=1950&q=80');
+            background-size: cover;
+            color: white;
+            text-align: center;
+            padding: 100px 20px;
+        }
+        header h1 {
+            font-size: 3.5rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+            text-align:center;
+        }
+        header p {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+        }
+        header a {
+            background-color: #ff6347;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 1.2rem;
+            transition: background 0.3s;
+        }
+        header a:hover {
+            background-color: #ff4500;
+        }
+
+    
+        .navbar {
+            background-color: #02c459;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: center;
+            padding: 15px;
+        }
+        .navbar a {
+            color: white;
+            padding: 15px 30px;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        .navbar a:hover {
+            background-color: #ff6347;
+        }
+
+        
+        section {
+            padding: 40px 20px;
+            margin: 20px auto;
+            border-radius: 10px;
+            max-width: 1200px;
+            box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        #about {
+            background-color: #ffe082;
+        }
+        #education {
+            background-color: #ffcc80;
+        }
+        #hobbies {
+            background-color: #ffab91;
+        }
+        #projects {
+            background-color: #ce93d8;
+        }
+        #contact {
+            background-color: #80cbc4;
+        }
+        section h2 {
+            text-align: center; /* This ensures center alignment */
+            margin-bottom: 20px;
+            font-size: 2rem;
+            color: #333;
+            border-bottom: 2px solid #ff6347;
+            display: inline-block;
+        }
+        section p, ul {
+            text-align: center;
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+        ul li {
+            list-style: none;
+            margin-bottom: 10px;
+        }
+
+        
+        .projects ul {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+        .projects ul li {
+            background-color: white;
+            border: 1px solid #ddd;
+            padding: 15px;
+            border-radius: 5px;
+            width: 30%;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .projects ul li:hover {
+            transform: scale(1.05);
+            box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #333;
+            color: white;
+            margin-top: 40px;
+        }
+        .contact-info a {
+            color: #ff6347;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        .contact-info a:hover {
+            color: #ff4500;
+        }
+
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .social-icon {
+            width: 60px;
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+        .social-icon:hover {
+            transform: scale(1.2);
+        }
+        section h2 {
+            transition: color 0.3s;
+            text-align: center;
+        }
+        section h2:hover {
+            color: #ff6347;
+        }
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.5s ease-in-out;
+        }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .skills-section {
+            background-color: #e59310e4;
+            padding: 50px 20px;
+            text-align: center;
+        }
+        .skills-section h2 {
+            font-size: 36px;
+            margin-bottom: 30px;
+            color: #333;
+            text-align: center;
+        }
+        .skill {
+            margin: 20px 0;
+        }
+        .skill h4 {
+            font-size: 18px;
+            color: #333;
+            margin-bottom: 5px;
+        }
+        .skill-bar {
+            width: 80%;
+            height: 20px;
+            background-color: #ddd;
+            border-radius: 10px;
+            margin: 0 auto;
+        }
+        .skill-progress {
+            height: 100%;
+            background-color: #4CAF50;
+            border-radius: 10px;
+            transition: width 0.5s ease-in-out;
+        }
+        .skill-progress:hover {
+            background-color: #45a049;
+        }
+        .skill:hover .skill-progress {
+            width: calc(100% + 5%);
+        }
+
+    </style>
+</head>
+<body>
+
+
+<div class="navbar">
+    <a href="#header">About Me</a>
+    <a href="#about">Education</a>
+    <a href="#education">Hobbies</a>
+    <a href="#hobbies">Projects</a>
+    <a href="#projects">Contact</a>
+</div>
+
+<header>
+    <h1>Tuhin's Portfolio</h1>
+    <p>IB Diploma Student | music | Passionate Coder</p>
+    <a href="#contact">Get in Touch</a>
+</header>
+
+<section id="about">
+    <h2>About Me</h2>
+    <p>Hi, I'm Tuhin, currently pursuing my IB Diploma in IB 2. I have a keen interest in coding, love playing cricket, and enjoy solving chess puzzles. My drive for knowledge and passion for learning motivates me to explore new areas, improve my skills, and contribute to innovative projects. I enjoy listening to music in my free time with artist such as Travis Scott.</p>
+</section>
+
+<section id="education">
+    <h2>Education</h2>
+    <p>I am pursuing the International Baccalaureate (IB) Diploma Programme in IB 2, where I am honing my skills in critical thinking, research, and academic writing across various subjects.</p>
+</section>
+
+<section id="hobbies">
+    <h2>Hobbies</h2>
+    <ul>
+        <li>Cricket</li>
+        <li>Coding</li>
+        <li>Chess</li>
+        <li>Reading</li>
+    </ul>
+</section>
+
+<section id="skills" class="skills-section">
+    <h2>Skills</h2>
+    <div class="skill">
+      <h4>JavaScript</h4>
+      <div class="skill-bar">
+        <div class="skill-progress" style="width: 85%;"></div>
+      </div>
+    </div>
+    
+    <div class="skill">
+      <h4>Python</h4>
+      <div class="skill-bar">
+        <div class="skill-progress" style="width: 90%;"></div>
+      </div>
+    </div>
+    
+    <div class="skill">
+      <h4>HTML/CSS</h4>
+      <div class="skill-bar">
+        <div class="skill-progress" style="width: 80%;"></div>
+      </div>
+    </div>
+    
+    <div class="skill">
+      <h4>Chess Strategy</h4>
+      <div class="skill-bar">
+        <div class="skill-progress" style="width: 75%;"></div>
+      </div>
+    </div>
+  
+    <div class="skill">
+      <h4>Cricket</h4>
+      <div class="skill-bar">
+        <div class="skill-progress" style="width: 70%;"></div>
+      </div>
+    </div>
+  </section>
+  
+
+<section class="projects" id="projects">
+    <h2>Projects</h2>
+    <ul>
+        
+<div class="project-card" onclick="openModal('project1')">Simple Chess Game</div>
+
+
+<div id="project1" class="modal">
+    <div class="modal-content">
+        <h4>Simple Chess Game</h4>
+        <p>This chess game was built using JavaScript. It features an interactive board and AI opponent.</p>
+        <img src="chess-game-screenshot.jpg" alt="Chess Game Screenshot">
+    </div>
+    <div class="modal-close" onclick="closeModal('project1')">&times;</div>
+</div>
+
+        <li>
+            <h3>Cricket Score Tracker</h3>
+            <p>A web application for tracking live cricket scores using API data.</p>
+        </li>
+        <li>
+            <h3>Portfolio Website</h3>
+            <p>This very portfolio website designed and developed to showcase my skills.</p>
+        </li>
+    </ul>
+</section>
+
+<section id="contact">
+    <h2>Contact Me</h2>
+    <p>If you'd like to collaborate or just chat, feel free to reach out to me through any of the following platforms:</p>
+    
+    <div class="social-links">
+        <a href="https://www.instagram.com/invenobeltixium" target="_blank">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram" class="social-icon">
+        </a>
+        <a href="https://www.linkedin.com/in/tuhin" target="_blank">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png" alt="LinkedIn" class="social-icon">
+        </a>
+        <a href="mailto:tuhin@example.com">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/4/4e/Gmail_Icon.png" alt="Gmail" class="social-icon">
+        </a>
+    </div>
+</section>
+
+<footer>
+    <p>&copy; 2024 Tuhin. All rights reserved.</p>
+</footer>
+
+</body>
+</html>
